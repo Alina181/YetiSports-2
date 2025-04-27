@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YetiSports 2 - Удар Касатки</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="background-music" src="./55.mp3" autoplay loop></audio>
+    <div id="game-container">
+        <!-- Главное меню -->
+        <div id="main-menu">
+            <button id="help-button" class="menu-button">?</button>
+            <button id="high-scores-button" class="menu-button">Таблица рекордов</button>
+            <button id="play-button" class="menu-button">Play</button>
+        </div>
+        
+        <!-- Модальное окно помощи -->
+        <div id="help-modal" class="modal">
+            <button class="close-button">&times;</button>
+            <h2>Инструкция</h2>
+            <p><strong>СНЕЖНЫЙ ЧЕЛОВЕК БРОСАЕТ СНЕЖОК:</strong></p>
+            <p>ЛЕВАЯ КНОПКА МЫШИ: БРОСАЕТ СНЕЖОК</p>
+            <p>ПОЛОЖЕНИЕ КУРСОРА МЫШИ: ОПРЕДЕЛЯЕТ НАПРАВЛЕНИЕ</p>
+            <p><strong>УДАР ПО ПИНГВИНУ:</strong></p>
+            <p>ПОЛОЖЕНИЕ УДАРА ВЛИЯЕТ НА ВЕРТИКАЛЬНОЕ НАПРАВЛЕНИЕ</p>
+            <p>ПОВОРОТ ПИНГВИНА (ПРИ ПОПАДАНИИ) ВЛИЯЕТ НА НАПРАВЛЕНИЕ ВЛЕВО/ВПРАВО</p>
+            <img src="./image/9.png" alt="Пингвин" style="width: 100px; display: block; margin: 20px auto;" class="no-bg">
+        </div>
+        
+        <!-- Модальное окно рекордов -->
+        <div id="high-scores-modal" class="modal">
+            <button class="close-button">&times;</button>
+            <h2>Таблица рекордов</h2>
+            <table id="high-scores-table">
+                <thead>
+                    <tr>
+                        <th>Место</th>
+                        <th>Имя</th>
+                        <th>Очки</th>
+                    </tr>
+                </thead>
+                <tbody id="high-scores-body">
+                    <!-- Заполняется JavaScript -->
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Игровой экран -->
+        <div id="game-screen">
+            <canvas id="yetisports-canvas"></canvas>
+            <div id="score-display">Очки: 0</div>
+            <div id="penguins-left">Пингвины: 10</div>
+            <div id="points-popup"></div>
+        </div>
+        
+        <!-- Экран окончания игры -->
+        <div id="game-over">
+            <h2>Игра окончена!</h2>
+            <div id="final-score">Ваш счет: 0</div>
+            <div>
+                <input type="text" id="name-input" placeholder="Введите ваше имя" maxlength="20">
+                <button id="save-score-button" class="menu-button">Сохранить</button>
+            </div>
+            <button id="play-again-button" class="menu-button">Играть снова</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
