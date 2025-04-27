@@ -14,6 +14,40 @@ const pointsPopup = document.getElementById('points-popup');
 const helpButton = document.getElementById('help-button');
 const highScoresButton = document.getElementById('high-scores-button');
 const playButton = document.getElementById('play-button');
+const backgroundMusic = document.getElementById('background-music');
+
+playButton.addEventListener('click', async () => {
+  try {
+    backgroundMusic.muted = false;
+    
+    // Попытка воспроизведения
+    const playPromise = backgroundMusic.play();
+    
+    if (playPromise !== undefined) {
+      await playPromise;
+    }
+    
+    console.log('Музыка успешно запущена');
+  } catch (error) {
+    console.error('Ошибка воспроизведения:', error);
+    
+    // Дополнительные действия при ошибке
+    backgroundMusic.muted = true;
+    backgroundMusic.play()
+      .then(() => {
+        backgroundMusic.muted = false;
+      })
+      .catch(e => {
+        console.error('Не удалось запустить даже с muted:', e);
+      });
+  }
+});
+backgroundMusic.addEventListener('canplaythrough', () => {
+    console.log('Аудио готово к воспроизведению');
+  });
+  const toggleSound = () => {
+    backgroundMusic.muted = !backgroundMusic.muted;
+  };
 const closeHelpButton = helpModal.querySelector('.close-button');
 const closeHighScoresButton = highScoresModal.querySelector('.close-button');
 const saveScoreButton = document.getElementById('save-score-button');
@@ -28,6 +62,8 @@ const penguinsLeftDisplay = document.getElementById('penguins-left');
 // Размеры холста
 canvas.width = 800;
 canvas.height = 600;
+
+
         
 // Игровые переменные
 let score = 0;
